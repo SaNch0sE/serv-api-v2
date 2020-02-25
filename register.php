@@ -9,7 +9,7 @@
         $users = json_decode(file_get_contents($filename), true);
     }
 	$output['ok'] = true;
-	if (isset(end($users)['id'])) {
+	if (isset($users[0]['id'])) {
 		foreach ($users as $arr => $subArr) {
 			if ($subArr['login'] === $data['login']) {
 				$output['ok'] = false;
