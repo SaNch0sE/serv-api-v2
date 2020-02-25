@@ -1,2 +1,3 @@
 # shpp_backend_v2
-- done: 0%
+- Auth: implemented
+- Fix: performed
