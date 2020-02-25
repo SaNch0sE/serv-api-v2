@@ -9,19 +9,22 @@
         $users = json_decode(file_get_contents($filename), true);
     }
 	$output['ok'] = true;
-	foreach ($users as $arr => $subArr) {
-		if ($subArr['login'] === $data['login']) {
-			$output['ok'] = false;
-			break;
+	if (isset(end($users)['id'])) {
+		foreach ($users as $arr => $subArr) {
+			if ($subArr['login'] === $data['login']) {
+				$output['ok'] = false;
+				break;
+			}
 		}
-	}
-	if ($output['ok'] && isset(end($users)['id'])) {
-		$data['id'] = end($users)['id']+1;
-		$data['user-key'] = null;
-		$users[$data['id']] = $data;
-		file_put_contents('users.json', json_encode($users));
-	} elseif ($output['ok']) {
+		if ($output['ok']) {
+			$data['id'] = end($users)['id']+1;
+			$data['user-key'] = null;
+			$users[$data['id']] = $data;
+			file_put_contents('users.json', json_encode($users));
+		}
+	} else {
 		$data['id'] = 0;
+		$data['user-key'] = null;
 		$users[0] = $data;
 		file_put_contents('users.json', json_encode($users));
 	}
