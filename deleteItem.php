@@ -1,0 +1,23 @@
+<?php
+	//require_once "log.php";
+	require_once "err-handler.php";
+	require_once 'getUserId.php';
+	$output['ok'] = false;
+	$i = 0;
+	$id = json_decode(file_get_contents('php://input'), true)['id'];
+	$uid = getUserId();
+	if ($uid >= 0) {
+		require "GetTasks.php";
+		foreach ($tasks as $key => $subArr) {
+			if ($subArr['id'] === intval($id)) {
+				unset($tasks[$i]);
+				$tasks = array_values($tasks);
+				$output['ok'] = true;
+			}
+			$i += 1;
+		}
+		file_put_contents($uid.'.json', json_encode($tasks));
+		echo json_encode($output);
+	} else {
+		throw array('error' => "Error when processing user id");
+	}
