@@ -26,8 +26,6 @@
 		$data['id'] = 0;
 		$data['user-key'] = null;
 		$users[0] = $data;
-		require_once 'log.php';
-		mlog($data);
-		//file_put_contents('users.json', json_encode($users));
+		file_put_contents('users.json', json_encode($users));
 	}
 	echo json_encode($output);
