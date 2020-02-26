@@ -3,7 +3,7 @@
 	require_once "val.php";
 	$data = json_decode(file_get_contents('php://input'), true);
 	try {
-		validate($data);
+		validate("login", $data);
 	} catch(Exception $e) {
 		echo json_encode(array('error' => $e));
 		return false;

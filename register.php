@@ -13,7 +13,7 @@
 	// Get POST data
 	$data = json_decode(file_get_contents('php://input'), true);
 	try {
-		validate($data);
+		validate("register", $data);
 	} catch(Exception $e) {
 		echo json_encode(array('error' => $e));
 		return false;
