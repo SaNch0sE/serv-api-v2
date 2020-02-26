@@ -11,6 +11,7 @@
 			$id = 0;
 		}
 		$data = json_decode(file_get_contents('php://input'), true);
+		require_once "val.php";
 		validate("addItem", $data);
 		$text = $data['text'];
 		$tasks[$id] = ['id' => $id, 'text' => $text, 'checked' => false];

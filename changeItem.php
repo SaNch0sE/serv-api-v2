@@ -1,10 +1,12 @@
 <?php
-	require_once "err-handler.php";
+	require_once 'err-handler.php';
 	require_once 'getUserId.php';
 	$uid = getUserId();
 	if ($uid >= 0) {
 		require_once 'GetTasks.php';
 		$data = json_decode(file_get_contents('php://input'), true);
+		require_once 'val.php';
+		validate("changeItem", $data);
 		$id = $data['id'];
 		$checked = $data['checked'];
 		$text = $data['text'];

@@ -4,7 +4,10 @@
 	require_once 'getUserId.php';
 	$output['ok'] = false;
 	$i = 0;
-	$id = json_decode(file_get_contents('php://input'), true)['id'];
+	$data = json_decode(file_get_contents('php://input'), true);
+	require_once 'val.php';
+	validate("deleteItem", $data);
+	$id = $data['id'];
 	$uid = getUserId();
 	if ($uid >= 0) {
 		require "GetTasks.php";
