@@ -3,7 +3,7 @@
 	require_once "err-handler.php";
 	require_once 'getUserId.php';
 	$uid = getUserId();
-	if ($uid >= 0 && !$uid) {
+	if ($uid >= 0 && $uid) {
 		require "GetTasks.php";
 		if (is_array($tasks)) {
 			$id = end($tasks)['id']+1;

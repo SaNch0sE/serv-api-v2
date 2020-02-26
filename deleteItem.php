@@ -9,7 +9,7 @@
 	validate("deleteItem", $data);
 	$id = $data['id'];
 	$uid = getUserId();
-	if ($uid >= 0 && !$uid) {
+	if ($uid >= 0 && $uid) {
 		require "GetTasks.php";
 		foreach ($tasks as $key => $subArr) {
 			if ($subArr['id'] === intval($id)) {
