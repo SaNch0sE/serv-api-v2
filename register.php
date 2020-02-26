@@ -1,5 +1,6 @@
 <?php
 	require_once "err-handler.php";
+	require_once "val.php";
 	// Get all users
 	$filename = 'users.json';
     if (file_exists($filename)) {
