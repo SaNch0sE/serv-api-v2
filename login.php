@@ -12,7 +12,7 @@
 	$users = json_decode(file_get_contents('users.json'), true);
 	$i = 0;
 	foreach ($users as $arr => $subArr) {
-		if ($subArr['login'] === $data['login'] && $subArr['password'] === $data['password']) {
+		if ($subArr['login'] === $data['login'] && $subArr['pass'] === $data['pass']) {
 			$users[$i]['user-key'] = md5($subArr['login'].$subArr['id']);
 			file_put_contents('users.json', json_encode($users));
 			setcookie('user-key', $users[$i]['user-key']);
