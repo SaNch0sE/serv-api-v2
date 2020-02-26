@@ -1,6 +1,5 @@
 <?php
 	require_once "err-handler.php";
-	$data = json_decode(file_get_contents('php://input'), true);
 	$filename = 'users.json';
     if (file_exists($filename)) {
         $users = json_decode(file_get_contents($filename), true);
@@ -10,6 +9,7 @@
     }
 	$output['ok'] = true;
 	if (isset($users[0]['id'])) {
+		$data = json_decode(file_get_contents('php://input'), true);
 		foreach ($users as $arr => $subArr) {
 			if ($subArr['login'] === $data['login']) {
 				$output['ok'] = false;
@@ -23,6 +23,7 @@
 			file_put_contents('users.json', json_encode($users));
 		}
 	} else {
+		$data = json_decode(file_get_contents('php://input'), true);
 		$data['id'] = 0;
 		$data['user-key'] = null;
 		$users[0] = $data;
