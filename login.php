@@ -10,7 +10,8 @@
 		if ($subArr['login'] === $data['login'] && $subArr['pass'] === $data['pass']) {
 			$users[$i]['user-key'] = md5($subArr['login'].$subArr['id']);
 			file_put_contents('users.json', json_encode($users));
-			setcookie('user-key', $users[$i]['user-key'], time() + (86400 * 30), "/");
+			setcookie('user-key', "", time() - 3600);
+			setcookie('user-key', $users[$i]['user-key'], time() + (86400 * 30), "/", "https://shpptodo.herokuapp.com/");
 			$output['ok'] = true;
 		}
 		$i += 1;
