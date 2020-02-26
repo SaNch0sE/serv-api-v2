@@ -10,7 +10,9 @@
 		} else {
 			$id = 0;
 		}
-		$text = json_decode(file_get_contents('php://input'), true)['text'];
+		$data = json_decode(file_get_contents('php://input'), true);
+		validate("addItem", $data);
+		$text = $data['text'];
 		$tasks[$id] = ['id' => $id, 'text' => $text, 'checked' => false];
 		file_put_contents($filename, json_encode($tasks));
 		echo json_encode(['id' => $id]);

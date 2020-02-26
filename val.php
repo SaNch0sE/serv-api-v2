@@ -7,5 +7,11 @@
             } else {
                 throw new Exception("Bad input data", 422);
             }
+        } elseif ($action === "addItem") {
+            if (isset($data["text"]) && strlen($data["text"]) >= 1) {
+                return true;
+            } else {
+                throw new Exception("Bad input data", 422);
+            }
         }
     }
