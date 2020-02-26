@@ -1,5 +1,11 @@
 <?php
-    function validate($data)
+    function validate($action, $data)
     {
-        # code...
+        if ($action === "login" || $action === "register") {
+            if (isset($data["login"]) && isset($data["password"])) {
+                return true;
+            } else {
+                throw new Exception("Bad input data", 422);
+            }
+        }
     }

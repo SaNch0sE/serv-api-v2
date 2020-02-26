@@ -1,6 +1,13 @@
 <?php
 	require_once "err-handler.php";
+	require_once "val.php";
 	$data = json_decode(file_get_contents('php://input'), true);
+	try {
+		validate($data);
+	} catch(Exception $e) {
+		echo json_encode(array('error' => $e));
+		return false;
+	}
 	$output['ok'] = false;
 	$users = json_decode(file_get_contents('users.json'), true);
 	$i = 0;
