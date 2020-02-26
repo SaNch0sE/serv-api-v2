@@ -5,7 +5,7 @@
             if (isset($data["login"]) && isset($data["password"])) {
                 return true;
             } else {
-                throw new Exception("Bad input data", 422);
+                throw new Exception("Error 422. Bad input data");
             }
         }
     }
