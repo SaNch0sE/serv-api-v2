@@ -12,12 +12,7 @@
 	$output['ok'] = true;
 	// Get POST data
 	$data = json_decode(file_get_contents('php://input'), true);
-	try {
-		validate("register", $data);
-	} catch(Exception $e) {
-		echo json_encode(array('error' => $e));
-		return false;
-	}
+	validate("register", $data);
 	if (isset($users[0]['id'])) {
 		foreach ($users as $arr => $subArr) {
 			if ($subArr['login'] === $data['login']) {

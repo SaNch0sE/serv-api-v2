@@ -4,7 +4,7 @@
     ini_set('display_errors', 1);
     function excepHandler($exception) {
         header('HTTP/2 500 Internal server error');
-	    echo json_encode(['error' => $exception->getMessage()."<br/>".$exception->getFile().':'.$exception->getLine()."<br/>".$exception->getTraceAsString()."<br/>"]);
+	    echo json_encode(['error' => $exception->getMessage()."<br/>".$exception->getTraceAsString()]);
         exit();
 	}
     function errHandler($level, $message, $file, $line, $context) {
