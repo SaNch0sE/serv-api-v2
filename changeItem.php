@@ -20,6 +20,7 @@
 			}
 			$i += 1;
 		}
+		$tasks = array_values($tasks);
 		file_put_contents($uid.'.json', json_encode($tasks));
 		echo json_encode($output);
 	} else {

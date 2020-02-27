@@ -14,11 +14,11 @@
 		foreach ($tasks as $key => $subArr) {
 			if ($subArr['id'] === intval($id)) {
 				unset($tasks[$i]);
-				$tasks = array_values($tasks);
 				$output['ok'] = true;
 			}
 			$i += 1;
 		}
+		$tasks = array_values($tasks);
 		file_put_contents($uid.'.json', json_encode($tasks));
 		echo json_encode($output);
 	} else {
