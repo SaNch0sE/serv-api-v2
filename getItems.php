@@ -5,7 +5,11 @@
 	$uid = getUserId();
 	if ($uid >= 0 && $uid) {
 		require "GetTasks.php";
-		$data['items'] = $tasks;
+		if ($tasks != null) {
+			$data['items'] = $tasks;
+		} else {
+			$data['items'] = [];
+		}
 		echo json_encode($data);
 	} else {
 		header('Content-Type: application/json');
