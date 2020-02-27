@@ -15,6 +15,7 @@
 		validate("addItem", $data);
 		$text = $data['text'];
 		$tasks[$id] = ['id' => $id, 'text' => $text, 'checked' => false];
+		$tasks = array_values($tasks);
 		file_put_contents($filename, json_encode($tasks));
 		echo json_encode(['id' => $id]);
 	} else {
