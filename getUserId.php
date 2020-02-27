@@ -4,7 +4,7 @@
 		require_once "log.php";
 		$users = json_decode(file_get_contents('users.json'), true);
 		if (!isset($_COOKIE['user-key'])) {
-			//mlog($_COOKIE['user-key']);
+			mlog($_COOKIE['user-key']);
 			return false;
 		}
 		foreach ($users as $key => $value) {
